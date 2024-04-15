@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <label for="num1"> Enter number between 2 and 10: </label> <br>
+	<input type="number" id="num1" name="start"> by
+	<input type="number" id="num2" name="end"><br><br>
+	<button onclick="generateTable()"> Click here when ready! </button>
+	<div id="table"></div>
+
+    <script>
+
+
+function generateTable() {
+    var start = document.getElementById("num1").value;
+    var end = document.getElementById("num2").value;
+
+    if (start < 2 || start > 10 || end < 2 || end > 10) {
+        alert("Please enter numbers between 2 and 10 ONLY ");
+        return;
+    }
+
+    var table = "";
+    var i = start;
+    while (i <= end) {
+        var row = "";
+        var j = start;
+        do {
+            row += i * j;
+            if (j < end) {
+                row += "\t";
+            }
+            j++;
+        } while (j <= end);
+        table += row + "\n";
+        i++;
+    }
+
+    var tableDiv = document.getElementById("table");
+    tableDiv.innerHTML = "<pre>" + table + "</pre>";
+}
+    </script>
+</body>
+</html>
